@@ -14,9 +14,9 @@
         transpiler: 'typescript',
         typescriptOptions: { emitDecoratorMetadata: true },
         packages: {'app1': {defaultExtension: 'ts'}},
-        map: { 'app1': './angular2/src/app1' }
+        map: { 'app1': './angular2Hacks/app1' }
       });
-      System.import('environment_main')
+      System.import('app1/environment_main')
             .then(null, console.error.bind(console));
     </script>
   </head>
