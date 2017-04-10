@@ -28,18 +28,20 @@ const HEROES: Hero[] = [
     <h2>My Heroes</h2>
     <ul class="heroes">
     <!--Iterating through the list of heroes-->
-      <li *ngFor="let hero of heroes">
+      <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
       <!--For each of the hero we are displaying the data-->
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-
-    <h2>{{hero.name}} details!</h2>
-    <div><label>id: </label>{{hero.id}}</div>
-    <div><label>name: </label>{{hero.name}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="hero.name" placeholder="name">
+    <div *ngIf="selectedHero">
+      <h2>{{selectedHero.name}} details!</h2>
+      <div><label>id: </label>{{selectedHero.id}}</div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="selectedHero.name" placeholder="name">
+      </div>
     </div>`,
 
     styles: [`
@@ -95,13 +97,20 @@ const HEROES: Hero[] = [
 
 })
 
+
 //<----Exporting the class so that it is available outside the file---->
 export class AppComponent  {
     title = 'Tour of Heroes';
-    hero: Hero = {                   //<----Initialising the hero class
+    //<--This is a dummy variable. This is not used and is kept here just for demo
+    selectedHero1: Hero = {                   //<----Initialising the hero class
                     id: 1,
                     name: 'Windstorm_class'
                 };
+    selectedHero: Hero; //<--This here means that we are creating a variable of type Hero
+    onSelect(hero: Hero): void {
+      this.selectedHero = hero;
+    }
+
     //The data type of heroes will be derived from HEROES which is a feature of typescript
     //We are addding this here to expose it outside
     heroes=HEROES
