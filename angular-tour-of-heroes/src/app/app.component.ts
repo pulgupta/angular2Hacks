@@ -1,19 +1,9 @@
 import { Component } from   '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
-
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+import {HEROES} from './mock-heroes'
+import { HeroService } from './hero.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'my-app',  //<----Name of the html element this component will render
@@ -79,23 +69,34 @@ const HEROES: Hero[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `]
+  `],
+  providers: [HeroService]
 })
 
 //<----Exporting the class so that it is available outside the file---->
 export class AppComponent  {
     title = 'Tour of Heroes';
+    heroes: Hero[];
     //<--This is a dummy variable. This is not used and is kept here just for demo
     selectedHero1: Hero = {                   //<----Initialising the hero class
                     id: 1,
                     name: 'Windstorm_class'
                 };
     selectedHero: Hero; //<--This here means that we are creating a variable of type Hero
+
     onSelect(hero: Hero): void {
       this.selectedHero = hero;
     }
+    constructor(private heroService: HeroService) { }
 
-    //The data type of heroes will be derived from HEROES which is a feature of typescript
-    //We are addding this here to expose it outside
-    heroes=HEROES
+    //<-- And this is how you get the data using a promise
+    getHeroes(): void {
+      this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
+    //<-- This is a hook we have created so that the method will be called at the load of the application
+    //<-- we can do this in constructor as well but that will make our constructor more loaded and we do not want to do that
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
 }
