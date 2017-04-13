@@ -7,6 +7,7 @@ import { AppComponent }        from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroesComponent }     from './heroes.component';
 import { HeroService }         from './hero.service';
+import {DashboardComponent}    from './dashboard.component'
 
 @NgModule({
   imports: [
@@ -16,13 +17,26 @@ import { HeroService }         from './hero.service';
       {
         path: 'heroes',
         component: HeroesComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: '',
+        redirectTo: '/dashboard',  //<-- This is a redirect route.
+        //This will redirect the page to the url which we specify here. Right now
+        //we are redirecting empty string to dashboard so this will happen at
+        //page load itself
+        pathMatch: 'full'
       }
     ])
   ],
   declarations: [
     AppComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashboardComponent
   ],
   providers: [
     HeroService

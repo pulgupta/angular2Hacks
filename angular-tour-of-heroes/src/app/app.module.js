@@ -13,6 +13,7 @@ var app_component_1 = require("./app.component");
 var hero_detail_component_1 = require("./hero-detail.component");
 var heroes_component_1 = require("./heroes.component");
 var hero_service_1 = require("./hero.service");
+var dashboard_component_1 = require("./dashboard.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,13 +28,26 @@ AppModule = __decorate([
                 {
                     path: 'heroes',
                     component: heroes_component_1.HeroesComponent
+                },
+                {
+                    path: 'dashboard',
+                    component: dashboard_component_1.DashboardComponent
+                },
+                {
+                    path: '',
+                    redirectTo: '/dashboard',
+                    //This will redirect the page to the url which we specify here. Right now
+                    //we are redirecting empty string to dashboard so this will happen at
+                    //page load itself
+                    pathMatch: 'full'
                 }
             ])
         ],
         declarations: [
             app_component_1.AppComponent,
             hero_detail_component_1.HeroDetailComponent,
-            heroes_component_1.HeroesComponent
+            heroes_component_1.HeroesComponent,
+            dashboard_component_1.DashboardComponent
         ],
         providers: [
             hero_service_1.HeroService
