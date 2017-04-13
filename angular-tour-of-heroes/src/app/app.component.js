@@ -15,7 +15,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <my-heroes></my-heroes>\n  "
+        template: "\n    <h1>{{title}}</h1>\n    <a routerLink=\"/heroes\">Heroes</a>\n    <router-outlet></router-outlet> <!--Earlier we were directly injecting the\n    my-heroes tag here. So the app was showing the list of heroes on page load.\n    However which this router-outlet we tell the app to show the data when the\n    link matches the routes defined in the module.ts file-->\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
