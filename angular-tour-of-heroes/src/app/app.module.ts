@@ -29,6 +29,11 @@ import {DashboardComponent}    from './dashboard.component'
         //we are redirecting empty string to dashboard so this will happen at
         //page load itself
         pathMatch: 'full'
+      },
+      {
+        path: 'detail/:id', //<--This is parameterised routing. In such case
+        //id will be the dynamic part of the request
+        component: HeroDetailComponent
       }
     ])
   ],

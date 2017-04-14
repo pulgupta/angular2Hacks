@@ -40,6 +40,11 @@ AppModule = __decorate([
                     //we are redirecting empty string to dashboard so this will happen at
                     //page load itself
                     pathMatch: 'full'
+                },
+                {
+                    path: 'detail/:id',
+                    //id will be the dynamic part of the request
+                    component: hero_detail_component_1.HeroDetailComponent
                 }
             ])
         ],
