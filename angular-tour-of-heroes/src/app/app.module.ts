@@ -1,4 +1,4 @@
-import { NgModule }       from '@angular/core';
+import { NgModule }       from '@angular/core'; //<--javascript modules
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { RouterModule }   from '@angular/router';
@@ -11,7 +11,9 @@ import {DashboardComponent}    from './dashboard.component'
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule, //<-- We have included this both at the library level (which is javascript module import
+    // and also at @NgModule level which is angular module. So this is an example of two modules working
+  // together)
     FormsModule,
     RouterModule.forRoot([
       {
@@ -44,9 +46,15 @@ import {DashboardComponent}    from './dashboard.component'
     DashboardComponent
   ],
   providers: [
-    HeroService
+    HeroService // <--The level at which we define this providers will decide the
+    //number of instances created. In this case we have defined the providers at the root module
+    //level so the complete application will share a single instance. In case we would
+    //have defined this at the component level then each component instance will get a new instance
+    //of this service
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ] // We can have many modules but only the root module
+  //should set this bootstrap property
 })
+
 export class AppModule {
 }

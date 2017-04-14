@@ -9,7 +9,8 @@ import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'hero-detail',
-  templateUrl: './hero-detail.component.html',
+  templateUrl: './hero-detail.component.html', //<--Thus we have two ways of
+  //attaching html in templates. One using template and the second using the templateUrl
 })
 
 //<--Good point : Always export the component class because you will always import it elsewhere
