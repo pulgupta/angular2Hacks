@@ -13,7 +13,9 @@ import { OnInit } from '@angular/core';
 
     <h2>My Heroes</h2>
     <ul class="heroes">
-      <li *ngFor="let hero of heroes"
+      <li *ngFor="let hero of heroes" 
+      <!--^^^^^^^^^-->
+      <!--*ngFor inside li is angular's repeater directive-->
         [class.selected]="hero === selectedHero"
         (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
