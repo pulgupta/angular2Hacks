@@ -9,12 +9,17 @@ import { HeroesComponent }     from './heroes.component';
 import { HeroService }         from './hero.service';
 import {DashboardComponent}    from './dashboard.component'
 
+//^^^^ All these imports are javascript based and nothing is releated to angular as such.
+//Most of the apps has one module(root module) but as we grow we can create more feature modules 
+//and can lazy load them.
+
 @NgModule({
   imports: [
     BrowserModule, //<-- We have included this both at the library level (which is javascript module import
-    // and also at @NgModule level which is angular module. So this is an example of two modules working
-  // together)
-    FormsModule,
+      // and also at @NgModule level which is angular module. So this is an example of two modules working
+     // together)
+    //Browser module is required by every application which should run in a browser 
+    FormsModule, //<--Only ngModules classes go inside a import array
     RouterModule.forRoot([
       {
         path: 'heroes',
@@ -39,7 +44,8 @@ import {DashboardComponent}    from './dashboard.component'
       }
     ])
   ],
-  declarations: [
+  declarations: [ // <-- This should contains the components of our application.Only 
+  //components, directives and pipes should be listed in the declarations section 
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
@@ -53,7 +59,8 @@ import {DashboardComponent}    from './dashboard.component'
     //of this service
   ],
   bootstrap: [ AppComponent ] // We can have many modules but only the root module
-  //should set this bootstrap property
+  //should set this bootstrap property. This should list the parent of all the components to be bootstrapped and 
+  // this intern will boot strap all the childs of the parent
 })
 
 export class AppModule {
