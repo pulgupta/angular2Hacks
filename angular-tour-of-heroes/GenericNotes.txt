@@ -1,0 +1,13 @@
+Template Reference Variable : Template Reference Variable provides direct access to an element
+from within the template. 
+    <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+
+    ^^ The box here refers to the input element and then we can use that to display the value.
+    Each template reference variable is prefixed by a #.
+
+
+
+In a model class when using forms we can use public ego?: string ->> a question mark to show that 
+this value is an optional field in the form. This was inside a constructor so basicly we can 
+create an object of this model class without passing the optional field. 

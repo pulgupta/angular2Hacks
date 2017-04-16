@@ -15,4 +15,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+  //In TS we can define a variable of any type(which means it can store anything)
+  //title: any;
 }
