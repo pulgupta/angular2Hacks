@@ -1,4 +1,6 @@
-<div *ngIf="hero">
+<div *ngIf="hero"> <!--*ngIf does not hide or show anything. It actually adds or removes elements
+from DOM which is more efficient and memory friendly when we have a large 
+chunk of data that we want to show conditionally-->
   <h2>{{hero.name}} details!</h2>
   <div>
     <label>id: </label>{{hero.id}}</div>

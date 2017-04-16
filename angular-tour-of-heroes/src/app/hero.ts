@@ -21,4 +21,16 @@ export class AppCtorComponent {
   }
 }
 
+This is a short cut in case we want to define a class with properties and contstructor
+export class Hero {
+  constructor(
+    public id: number,
+    public name: string) { }
+}
+
+This short cut does all these things 
+Declares a constructor parameter and its type.
+Declares a public property of the same name.
+Initializes that property with the corresponding argument when creating an instance of the class.
+
 */
